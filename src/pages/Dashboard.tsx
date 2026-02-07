@@ -8,9 +8,8 @@ import CSVUpload from "@/components/dashboard/CSVUpload";
 import WorkspaceQuickstart from "@/components/dashboard/WorkspaceQuickstart";
 
 const Dashboard = () => {
-  const handleCSVUpload = (data: any[]) => {
-    console.log("CSV Data:", data);
-    // Process data and update state
+  const handleCSVUploadComplete = (recordCount: number) => {
+    console.log("CSV Upload complete:", recordCount, "records");
   };
 
   return (
@@ -91,7 +90,7 @@ const Dashboard = () => {
         {/* Bottom Section */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           <div className="lg:col-span-3">
-            <CSVUpload onUpload={handleCSVUpload} />
+            <CSVUpload onUploadComplete={handleCSVUploadComplete} />
           </div>
           <div className="lg:col-span-2">
             <WorkspaceQuickstart />

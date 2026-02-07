@@ -14,7 +14,89 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      products: {
+        Row: {
+          brand: string
+          category: string
+          created_at: string
+          current_stock: number
+          id: string
+          name: string
+          reorder_level: number
+          sku: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          brand?: string
+          category?: string
+          created_at?: string
+          current_stock?: number
+          id?: string
+          name: string
+          reorder_level?: number
+          sku?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          brand?: string
+          category?: string
+          created_at?: string
+          current_stock?: number
+          id?: string
+          name?: string
+          reorder_level?: number
+          sku?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sales_history: {
+        Row: {
+          brand: string
+          created_at: string
+          festival: string | null
+          id: string
+          product_id: string | null
+          product_name: string
+          quantity_sold: number
+          sale_date: string
+          user_id: string
+        }
+        Insert: {
+          brand?: string
+          created_at?: string
+          festival?: string | null
+          id?: string
+          product_id?: string | null
+          product_name: string
+          quantity_sold?: number
+          sale_date: string
+          user_id: string
+        }
+        Update: {
+          brand?: string
+          created_at?: string
+          festival?: string | null
+          id?: string
+          product_id?: string | null
+          product_name?: string
+          quantity_sold?: number
+          sale_date?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sales_history_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
